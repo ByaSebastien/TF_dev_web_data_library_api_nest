@@ -5,13 +5,10 @@ export class UserDto {
     @ApiProperty()
     id: number;
     @ApiProperty()
-    username: string;
-    @ApiProperty()
     email: string;
 
     constructor(entity: UserEntity) {
         this.id = entity.id;
-        this.username = entity.username;
         this.email = entity.email;
     }
 }

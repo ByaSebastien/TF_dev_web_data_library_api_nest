@@ -10,6 +10,7 @@ export class AuthMiddleware implements NestMiddleware {
   ){}
 
   async use(req: Request&{session: any}, res: Response, next: NextFunction) {
+    console.log('Authorization header:', req.headers.authorization);
     if(!req.headers.authorization) {
       next();
       return;
@@ -20,6 +21,7 @@ export class AuthMiddleware implements NestMiddleware {
       return;
     }
     try {
+      console.log(token);
       req.session = await this.jwtService.verifyAsync(token);
     } finally {
       next();
